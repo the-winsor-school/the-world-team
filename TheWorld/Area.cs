@@ -86,17 +86,17 @@ namespace TheWorld
 
             foreach (string key in Items.Keys)
 			{
-				longDescription += string.Format("There is a [{0}]. {1}", key, Environment.NewLine);
+				longDescription += string.Format("There is a {0}. {1}", key, Environment.NewLine);
 			}
 
 			foreach(string key in Creatures.Keys)
 			{
-				longDescription += string.Format("You see a [{0}]. {1}", key, Environment.NewLine);
+				longDescription += string.Format("You see a {0}. {1}", key, Environment.NewLine);
 			}
 
 			foreach(string keyword in NeighboringAreas.Keys)
 			{
-				longDescription += string.Format("If you go [{0}] there is a {1}.{2}",
+				longDescription += string.Format("If you go {0} there is a {1}.{2}",
 				                                  keyword,
 				                                  NeighboringAreas [keyword].Name,
 				                                  Environment.NewLine);

@@ -48,7 +48,7 @@ namespace TheWorld
             // TODO:  Easy Achievement:
             // Script an Intro Sequence setting the stage for your game.
             // Start your storyline off with a little more than just dropping
-            // the player into the world with no idea what is going on....
+            // the player int  o the world with no idea what is going on....
             // ... or maybe that's what you want, nobody told me what was going on
             // when I landed in this world.
 

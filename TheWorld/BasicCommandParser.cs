@@ -24,7 +24,6 @@ namespace TheWorld
     /// </summary>
     public static partial class TheGame
     {
-
 		/// <summary>
 		/// The command words.
 		/// These are all the words that the game will accept as commands.
@@ -35,19 +34,22 @@ namespace TheWorld
 			"go", "look", "help", "quit", "examine", "fight"
 		};
 
-        /// <summary>
-        /// TODO:  Easy Achievement
-        /// Improve the readability of other code by completing this method.
-        ///
-        /// This should return True if and only if the CommandWords list contains
-        /// the give cmdWord.
-        ///
-        /// Implement this method in appropriate places such as the ParseCommand method.
-        /// 
-        /// </summary>
-        /// <param name="cmdWord"></param>
-        /// <returns></returns>
-		private static bool IsValidCommandWord(string cmdWord) => throw new NotImplementedException();
+		/// <summary>
+		/// TODO:  Easy Achievement
+		/// Improve the readability of other code by completing this method.
+		///
+		/// This should return True if and only if the CommandWords list contains
+		/// the give cmdWord.
+		///
+		/// Implement this method in appropriate places such as the ParseCommand method.
+		/// 
+		/// </summary>
+		/// <param name="cmdWord"></param>
+		/// <returns></returns>
+		private static bool IsValidCommandWord(string cmdWord)
+		{
+			throw new NotImplementedException();
+		}
 
 		/// <summary>
 		/// Parses the command and do any required actions.
@@ -82,7 +84,7 @@ namespace TheWorld
 			}
             else if (cmdWord.Equals("help"))
             {
-                // TODO:  Implement this to show a new player how to use commands!
+				ProcessHelpCommand(parts);
             }
 
             // TODO: Many Achievements
@@ -99,18 +101,25 @@ namespace TheWorld
         {
             if(parts.Length == 1)
             {
-                // TODO:  Easy Achievement (1):
-                // the whole command is just "help".  Print a generic help message that
-                // tells the player what valid command words are and how to formulate them
-                //
-                // TODO:  Easy Achievement (2):
-                // Print a helpful example that shows the Player an example command that
-                // will work in the current Area.  (e.g. "look [something]" where that
-                // something is a valid thing to look at in the CurrentArea.
-            }
+				Console.WriteLine("Try typing 'look' - that'll start you off");
+				Console.WriteLine("For more commands, type help more");
+				//
+				// TODO - Emi:  Easy Achievement (2):
+				// Print a helpful example that shows the Player an example command that
+				// will work in the current Area.  (e.g. "look [something]" where that
+				// something is a valid thing to look at in the CurrentArea.
+			}
             if(parts.Length == 2)
             {
-                // TODO: Moderate Achievement (3):
+                if(parts[1] == "more")
+                {
+					Console.WriteLine("Some more commands you can use:");
+					Console.WriteLine("       fight [creature]");
+					Console.WriteLine("       look at [object/creature]");
+					Console.WriteLine("       go [direction]");
+                    //TODO - Emi: Add more commmands here
+				}
+                // TODO: Moderate Achievement (3):l
                 // In this case, the user is looking for help with a specific command, so
                 // you should verify that the second word in the string is a valid command word
                 // then for each possible valid command word, print a useful help message that
@@ -121,7 +130,7 @@ namespace TheWorld
         }
 
 		/// <summary>
-		/// Enter Combat mode.
+		/// Enter Combat mode.yo
 		/// </summary>
 		/// <param name="parts">Command as typed by the user split into individual words.</param>
 		private static void ProcessFightCommand(string[] parts)
@@ -183,9 +192,8 @@ namespace TheWorld
 			{
 				Console.WriteLine(CurrentArea.LookAround());
 			}
-			else
-			{
-				// try to find the thing that the user is looking at.
+            else if (parts.Length == 2)
+            {
 				try
 				{
 					// if it is there, print the appropriate description.
@@ -197,6 +205,24 @@ namespace TheWorld
 					PrintLineDanger(e.Message);
 				}
 			}
+			else if (parts.Length == 3)
+			{
+				// try to find the thing that the user is looking at.
+				try
+				{
+					// if it is there, print the appropriate description.
+					Console.WriteLine(CurrentArea.LookAt(parts[2]));
+				}
+				catch (WorldException e)
+				{
+					// otherwise, print an appropriate error message.
+					PrintLineDanger(e.Message);
+				}
+			}
+            else
+            {
+				Console.WriteLine("Are you using the look command wrong? Try doing typing either 'look [object]' or 'look at [object]'");
+            }
 		}
 
 		/// <summary>

@@ -52,7 +52,7 @@ namespace TheWorld
 			start.AddItem(new Item()
                 {
                     Name = "Grass",
-                    Description = "Grass... Lots of Grass... Like... Everywhere."
+                    Description = "Grass... Lots of Grass... Like... Everywhere. Pretty good grass though."
                 },
 				"grass"
             );
@@ -94,8 +94,34 @@ namespace TheWorld
                 "frog"
             );
 
+			Area well = new Area()
+			{
+				Name = "Well",
+				Description = "It's a well! Round, has a roof, filled with water. Definitely a well."
+			};
+
+			well.AddItem(new Item()
+			{
+				Name = "Bucket",
+				Description = "A metal bucket. Some dirty old water inside it. Kind of gross."
+			},
+				"bucket"
+			);
+
+
+			well.AddCreature(new Creature()
+			{
+				Name = "Fish",
+				Description = "A brown and tiny fish. It doesn't look very tasty.",
+				Stats = new StatChart() { MaxHPs = 5, HPs = 5, Atk = new Dice(Dice.Type.D6), Def = new Dice(Dice.Type.D4), Level = 1, Exp = 5 }
+			},
+				"fish"
+			);
+
 			// These two lines LINK the two areas together.  Don't forget to go both ways or you'll end up with a dead end
 			// and no way out!!!
+			well.AddNeighbor(stream, "east");
+			stream.AddNeighbor(well, "west");
 			start.AddNeighbor(stream, "north");
 			stream.AddNeighbor(start, "south");
 

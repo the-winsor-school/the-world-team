@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+
 namespace TheWorld
 {
     /// <summary>
@@ -33,5 +35,8 @@ namespace TheWorld
         /// </summary>
         /// <param name="playerInput"></param>
         void Talk(string playerInput = default);
+        //tag = new Dictionary<string, string>;
+        string Dialogue { get; set; }
+
     }
 }

@@ -35,6 +35,14 @@ namespace TheWorld
 			set;
 		}
 
+        /// <summary>
+        /// What article should be used to describe this object? eg. a cat, the city walls
+        /// </summary>
+        public string Article
+        {
+            get;
+            set;
+        }
 
         // TODO:  Moderate Achievement
         // Give Creatures an Inventory (much like the Player's Backpack)
@@ -42,6 +50,6 @@ namespace TheWorld
         // CurrentArea for the Player to be able to PickUp.
         // (That logic will be added to the ProcessFightCommand method in the Win case.)
 
-	}
+    }
 }
 

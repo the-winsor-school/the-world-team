@@ -34,6 +34,15 @@ namespace TheWorld
 			get;
 			set;
 		}
+
+        /// <summary>
+        /// What article should be used to describe this object? eg. a boulder, the city walls
+        /// </summary>
+        public string Article
+        {
+            get;
+            set;
+        }
 	}
 
     // TODO: Moderate Achievement

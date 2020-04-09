@@ -37,13 +37,14 @@ namespace TheWorld
 		public static Area BuildWorld()
 		{
 			// This is going to be the area where the player starts.
-			Area start = new Area() { Name = "The Field", Description = "A wide grassy field with not much to see." };
+			Area start = new Area() { Name = "the field", Article = "is", Description = "A wide grassy field with not much to see." };
 
 			// I can create a new Item and add it directly into the Area without having a separate variable for it!  Convenient!
 			start.AddItem(new Item()
                 {
-				    Name = "Boulder",
-				    Description = "It's a big granite boulder.  It has a weird glyph carved into it, but you can't make any sense of it."
+				    Name = "boulder",
+				    Description = "It's a big granite boulder.  It has a weird glyph carved into it, but you can't make any sense of it.",
+                    Article = " a"
 			    },
                 "boulder"
             );
@@ -51,9 +52,16 @@ namespace TheWorld
 			// Doing it again--no separate variable for the new item.  It goes directly into the created area.
 			start.AddItem(new Item()
                 {
+<<<<<<< Updated upstream
                     Name = "Grass",
                     Description = "Grass... Lots of Grass... Like... Everywhere."
                 },
+=======
+                    Name = "grass",
+                    Description = "Grass... Lots of Grass... Like... Everywhere. Pretty good grass though.",
+					Article = ""
+			},
+>>>>>>> Stashed changes
 				"grass"
             );
 
@@ -61,39 +69,44 @@ namespace TheWorld
 			// Don't forget that last word is the Unique Identifier.  So I can't have more than one thing in my area named "bunny"
 			start.AddCreature(new Creature()
                 {
-				    Name = "Bunny Rabbit",
+				    Name = "bunny Rabbit",
 				    Description = "A cute bunny.  Looks pretty tasty actually...",
-				    Stats = new StatChart() { Level = 1, MaxHPs = 10, HPs = 10, Atk = new Dice(Dice.Type.D4), Def = new Dice(Dice.Type.D4), Exp = 3 }
-			    },
+				    Stats = new StatChart() { Level = 1, MaxHPs = 10, HPs = 10, Atk = new Dice(Dice.Type.D4), Def = new Dice(Dice.Type.D4), Exp = 3 },
+					Article = " a"
+			},
                 "bunny"
             );
 
 			// Here's a second area.
 			Area stream = new Area()
             {
-				Name = "Stream",
-				Description = "A burbling stream.  There are some rocks that look like you could cross them to get to the other side."
+				Name = "stream",
+				Description = "A burbling stream.  There are some rocks that look like you could cross them to get to the other side.",
+                Article = "is a"
 			};
 
 			// I will populate it with items and creatures in the same way...
 			stream.AddItem(new Item()
-                {
-				    Name = "Lizard",
-				    Description = "A funny lizard with a black stripe down its back.  It doesn't look intimidated by your presence," +
-				    " but it doesn't look very interested either. Upon closer inspection, it might not be alive..."
-			    },
-                "lizard"
-            );
+			{
+				Name = "lizard",
+				Description = "A funny lizard with a black stripe down its back.  It doesn't look intimidated by your presence," +
+					" but it doesn't look very interested either. Upon closer inspection, it might not be alive...",
+					Article = " a"
+			},
+				"lizard"
+			); ;
 
 			stream.AddCreature(new Creature()
                 {
-				    Name = "Frog",
+				    Name = "frog",
 				    Description = "A crazy big frog!  It looks like it could eat a bird if it caught one.  It also doesn't look happy.",
-				    Stats = new StatChart() { MaxHPs = 10, HPs = 10, Atk = new Dice(Dice.Type.D6), Def = new Dice(Dice.Type.D4), Level = 1, Exp = 5 }
-			    },
+				    Stats = new StatChart() { MaxHPs = 10, HPs = 10, Atk = new Dice(Dice.Type.D6), Def = new Dice(Dice.Type.D4), Level = 1, Exp = 5 },
+					Article = " a"
+			},
                 "frog"
             );
 
+<<<<<<< Updated upstream
 			// These two lines LINK the two areas together.  Don't forget to go both ways or you'll end up with a dead end
 			// and no way out!!!
 			start.AddNeighbor(stream, "north");

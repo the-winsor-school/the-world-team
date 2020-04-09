@@ -37,7 +37,10 @@ namespace TheWorld
 		public static Area BuildWorld()
 		{
 			// This is going to be the area where the player starts.
-			Area start = new Area() { Name = "The Field", Description = "A wide grassy field with not much to see." };
+			Area start = new Area() {
+                Name = "The Field",
+                Description = "A wide grassy field with not much to see."
+            };
 
 			// I can create a new Item and add it directly into the Area without having a separate variable for it!  Convenient!
 			start.AddItem(new Item()
@@ -94,16 +97,19 @@ namespace TheWorld
                 "frog"
             );
 
+            //a well! this will lead to wonderland
 			Area well = new Area()
 			{
-				Name = "Well",
-				Description = "It's a well! Round, has a roof, filled with water. Definitely a well."
+				Name = "well",
+				Description = "It's a well! Round, has a roof, filled with water. Definitely a well.",
+				Article = "is a"
 			};
 
 			well.AddItem(new Item()
 			{
-				Name = "Bucket",
-				Description = "A metal bucket. Some dirty old water inside it. Kind of gross."
+				Name = "bucket",
+				Description = "A metal bucket. Some dirty old water inside it. Kind of gross.",
+				Article = " a"
 			},
 				"bucket"
 			);
@@ -111,17 +117,38 @@ namespace TheWorld
 
 			well.AddCreature(new Creature()
 			{
-				Name = "Fish",
+				Name = "fish",
 				Description = "A brown and tiny fish. It doesn't look very tasty.",
-				Stats = new StatChart() { MaxHPs = 5, HPs = 5, Atk = new Dice(Dice.Type.D6), Def = new Dice(Dice.Type.D4), Level = 1, Exp = 5 }
+				Stats = new StatChart() { MaxHPs = 5, HPs = 5, Atk = new Dice(Dice.Type.D6), Def = new Dice(Dice.Type.D4), Level = 1, Exp = 5 },
+				Article = " a"
 			},
 				"fish"
 			);
 
-			// These two lines LINK the two areas together.  Don't forget to go both ways or you'll end up with a dead end
+			//the entrance to a great city
+			Area cityGates = new Area()
+			{
+				Name = "city_gates",
+				Description = "You approach the entrance to a city. The city's walls stretch to the edge of the horizon, and there is a large iron gate. Two stone lions guard the gate.",
+				Article = "are"
+				//make it so that you have to kill the lions to get into the city
+			};
+
+			cityGates.AddCreature(new Creature()
+			{
+				Name = "lions",
+				Description = "Two stone lions. But they seem almost alive - and dangerous",
+				Stats = new StatChart() { MaxHPs = 20, HPs = 20, Atk = new Dice(Dice.Type.D6), Def = new Dice(Dice.Type.D4), Level = 1, Exp = 5 },
+				Article = ""
+			},
+				"lions"
+			);
+			// These two lines LINK the two areas together. Don't forget to go both ways or you'll end up with a dead end
 			// and no way out!!!
 			well.AddNeighbor(stream, "east");
 			stream.AddNeighbor(well, "west");
+			stream.AddNeighbor(cityGates, "east");
+			cityGates.AddNeighbor(stream, "west");
 			start.AddNeighbor(stream, "north");
 			stream.AddNeighbor(start, "south");
 

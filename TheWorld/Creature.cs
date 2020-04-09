@@ -44,15 +44,6 @@ namespace TheWorld
 			set;
 		}
 
-        /// <summary>
-        /// What article should be used to describe this object? eg. a cat, the city walls
-        /// </summary>
-        public string Article
-        {
-            get;
-            set;
-        }
-
         // TODO:  Moderate Achievement
         // Give Creatures an Inventory (much like the Player's Backpack)
         // When the Creature is defeated, these Items should then drop into the

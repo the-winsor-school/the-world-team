@@ -98,7 +98,6 @@ namespace TheWorld
 				longDescription += string.Format("There is{1} {0}. {2}",
                                                   key,
 												  Items[key].Article, Environment.NewLine);
-				longDescription += string.Format("There is a {0}. {1}", key, Environment.NewLine);
 			}
 
 			foreach(string key in Creatures.Keys)
@@ -107,14 +106,11 @@ namespace TheWorld
                                                   key,
 												  Creatures[key].Article,
                                                   Environment.NewLine);
-				longDescription += string.Format("You see a {0}. {1}", key, Environment.NewLine);
 			}
 
 			foreach(string keyword in NeighboringAreas.Keys)
 			{
 
-
-				longDescription += string.Format("If you go {0} there {1} {2}. {3}",
 				longDescription += string.Format("If you go {0} there is a {1}.{2}",
 				                                  keyword,
 				                                  NeighboringAreas [keyword].Article,

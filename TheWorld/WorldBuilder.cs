@@ -52,16 +52,10 @@ namespace TheWorld
 			// Doing it again--no separate variable for the new item.  It goes directly into the created area.
 			start.AddItem(new Item()
                 {
-<<<<<<< Updated upstream
-                    Name = "Grass",
-                    Description = "Grass... Lots of Grass... Like... Everywhere."
-                },
-=======
                     Name = "grass",
                     Description = "Grass... Lots of Grass... Like... Everywhere. Pretty good grass though.",
 					Article = ""
 			},
->>>>>>> Stashed changes
 				"grass"
             );
 
@@ -106,7 +100,6 @@ namespace TheWorld
                 "frog"
             );
 
-<<<<<<< Updated upstream
 			// These two lines LINK the two areas together.  Don't forget to go both ways or you'll end up with a dead end
 			// and no way out!!!
 			start.AddNeighbor(stream, "north");

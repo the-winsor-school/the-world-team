@@ -18,6 +18,15 @@ namespace TheWorld
 		}
 
         /// <summary>
+        /// Article (and sometimes verb) used before area
+        /// </summary>
+        public string Article
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
         /// A description of the item.
         /// </summary>
 		public string Description
@@ -35,14 +44,6 @@ namespace TheWorld
 			set;
 		}
 
-        /// <summary>
-        /// What article should be used to describe this object? eg. a boulder, the city walls
-        /// </summary>
-        public string Article
-        {
-            get;
-            set;
-        }
 	}
 
     // TODO: Moderate Achievement

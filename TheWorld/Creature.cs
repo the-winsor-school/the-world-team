@@ -26,9 +26,18 @@ namespace TheWorld
 			set;
 		}
 
-        /// <summary>
-        /// Stats of the creature.
-        /// </summary>
+		/// <summary>
+		/// Article (and sometimes verb) used before area
+		/// </summary>
+		public string Article
+		{
+			get;
+			set;
+		}
+
+		/// <summary>
+		/// Stats of the creature.
+		/// </summary>
 		public StatChart Stats
 		{
 			get;

@@ -14,7 +14,7 @@ namespace TheWorld
 		/// The neighboring areas, indexed by Keyword for travel.
 		/// </summary>
 		protected Dictionary<string, Area> NeighboringAreas;
-
+        
 		/// <summary>
 		/// The items found in this Area, indexed by Unique Name.
 		/// </summary>
@@ -111,7 +111,7 @@ namespace TheWorld
 			foreach(string keyword in NeighboringAreas.Keys)
 			{
 
-				longDescription += string.Format("If you go {0} there is a {1}.{2}",
+				longDescription += string.Format("If you go {0} there is a {1} {2}. {3}",
 				                                  keyword,
 				                                  NeighboringAreas [keyword].Article,
 												  NeighboringAreas [keyword].Name,

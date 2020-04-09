@@ -18,6 +18,15 @@ namespace TheWorld
 		}
 
         /// <summary>
+        /// Article (and sometimes verb) used before area
+        /// </summary>
+        public string Article
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
         /// A description of the item.
         /// </summary>
 		public string Description
@@ -34,6 +43,7 @@ namespace TheWorld
 			get;
 			set;
 		}
+
 	}
 
     // TODO: Moderate Achievement

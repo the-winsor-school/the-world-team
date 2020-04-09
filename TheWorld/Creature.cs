@@ -26,15 +26,23 @@ namespace TheWorld
 			set;
 		}
 
-        /// <summary>
-        /// Stats of the creature.
-        /// </summary>
-		public StatChart Stats
+		/// <summary>
+		/// Article (and sometimes verb) used before area
+		/// </summary>
+		public string Article
 		{
 			get;
 			set;
 		}
 
+		/// <summary>
+		/// Stats of the creature.
+		/// </summary>
+		public StatChart Stats
+		{
+			get;
+			set;
+		}
 
         // TODO:  Moderate Achievement
         // Give Creatures an Inventory (much like the Player's Backpack)
@@ -42,6 +50,6 @@ namespace TheWorld
         // CurrentArea for the Player to be able to PickUp.
         // (That logic will be added to the ProcessFightCommand method in the Win case.)
 
-	}
+    }
 }
 

@@ -18,15 +18,6 @@ namespace TheWorld
 		}
 
         /// <summary>
-        /// Article (and sometimes verb) used before area
-        /// </summary>
-        public string Article
-        {
-            get;
-            set;
-        }
-
-        /// <summary>
         /// A description of the item.
         /// </summary>
 		public string Description
@@ -43,14 +34,43 @@ namespace TheWorld
 			get;
 			set;
 		}
-
 	}
 
     // TODO: Moderate Achievement
     // Build a "Book" class which is an Item that is both Carryable and Useable.
     // The Use method should print a short bit of text which is the "Story" or 
     // maybe some Plot element in your game.
+    public class Book : Item, IUseableItem, ICarryableItem
+    {
+        public int Weight { get; set; }
+        public String plot;
 
+        public Book()
+        {
+            plot = "Once upon a time, there was a person who was reading a book... ";
+        }
+
+        public void Use()
+        {
+            TextFormatter.PrintLineSpecial(plot);
+            Console.ReadLine();
+        }
+
+        //use item on an object
+        public void Use(ref object target)
+        {
+            if (target is Creature)
+            {
+                Creature creature = (Creature)target;
+                TextFormatter.PrintLineSpecial("You are reading to a {0}", creature.Name);
+                Console.ReadLine(); 
+            }
+            else
+            {
+                throw new WorldException(string.Format("You can't read to a {0}...", this.Name), target);
+            }
+        }
+    }
 
 
     /// <summary>

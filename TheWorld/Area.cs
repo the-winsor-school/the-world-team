@@ -203,24 +203,36 @@ namespace TheWorld
 			return Items [uid];
 		}
 
-        /// <summary>
-        /// Literally: Does the Items dictionary contain the given string as a Key.
-        /// </summary>
-        /// <param name="uid">name of the item</param>
-        /// <returns></returns>
-        public bool HasItem(string uid) => Items.ContainsKey(uid.ToLowerInvariant());
+		
+        //trying to implement UseItem
+		//public Item UseItem(string uid)
+		//{
+		//	uid = uid.ToLowerInvariant();
+		//	if (!this.HasItem(uid))
+		//		;
 
-        #endregion // Items
+		//	return UseItem[uid];
+		//}
 
-        #region Creatures
+		/// <summary>
+		/// Literally: Does the Items dictionary contain the given string as a Key.
+		/// </summary>
+		/// <param name="uid">name of the item</param>
+		/// <returns></returns>
+		public bool HasItem(string uid) => Items.ContainsKey(uid.ToLowerInvariant());
 
-        /// <summary>
-        /// Adds the creature.
-        /// </summary>
-        /// <param name="creature">Creature.</param>
-        /// <param name="uid">Unique name for the creature.  Must be unique in this area.</param>
-        /// <exception cref="WorldException">Throws an WorldException if the uid is already used in this area.</exception>
-        public void AddCreature(Creature creature, string uid)
+		
+		#endregion // Items
+
+		#region Creatures
+
+		/// <summary>
+		/// Adds the creature.
+		/// </summary>
+		/// <param name="creature">Creature.</param>
+		/// <param name="uid">Unique name for the creature.  Must be unique in this area.</param>
+		/// <exception cref="WorldException">Throws an WorldException if the uid is already used in this area.</exception>
+		public void AddCreature(Creature creature, string uid)
 		{
 			uid = uid.ToLowerInvariant();
 			if (Creatures.ContainsKey(uid))

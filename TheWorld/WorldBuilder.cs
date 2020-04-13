@@ -99,7 +99,6 @@ namespace TheWorld
 			},
                 "frog"
             );
-
             //a well! this will lead to wonderland
 			Area well = new Area()
 			{
@@ -147,9 +146,25 @@ namespace TheWorld
 				"stone_lion"
 			);
 
-			well.AddItem(new Item()
+			cityGates.AddItem(new Item()
 			{
-				Name = "door",
+				Name = "iron_gate",
+				Description = "This gate blocks access to the interior of the city.",
+				Article = " an"
+			},
+				"iron_gate"
+			);
+
+			Area hospitalRuins = new Area()
+			{
+				Name = "hospital_ruins",
+				Description = "You see the remains of a hospital. Something bad seems to have happened here - no natural wear and tear could cause this",
+				Article = "are"
+			};
+
+			hospitalRuins.AddItem(new Item()
+			{
+				Name = "broken_stethoscope",
 				Description = "A large stone door guards the entrance to the city. You try to open it, but you cannot. There is no key-hole.",
 				Article = " a"
 			},
@@ -192,7 +207,6 @@ namespace TheWorld
 			},
 				"scroll"
 			);
-		}
 
 
 
@@ -204,7 +218,9 @@ namespace TheWorld
 			cityGates.AddNeighbor(stream, "west");
 			start.AddNeighbor(stream, "north");
 			stream.AddNeighbor(start, "south");
-            well.Addneighbor(wonderland, "inside");
+            well.AddNeighbor(wonderland, "inside");
+            well.AddNeighbor(wonderland, "inside");
+
 			// Go back to the Main method and tell it where to start the game!
 			return start;
 		}

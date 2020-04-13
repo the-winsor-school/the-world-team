@@ -155,6 +155,47 @@ namespace TheWorld
 			},
 				"door"
 			);
+
+			// making the one way area (the magical city that you can only get to by falling into the well
+			Area wonderland = new Area()
+			{
+				Name = "wonderland",
+				Description = "You fall into a lush field. Everything looks a little more vibrant, unworldly, even",
+				Article = "the"
+			};
+
+			wonderland.AddCreature(new Creature()
+			{
+				Name = "gigantic butterflies",
+				Description = "Massive, colorful butterflies are floating through the sky, bobbing like balloons",
+				Stats = new StatChart() { MaxHPs = 3, HPs = 3, Atk = new Dice(Dice.Type.D6), Def = new Dice(Dice.Type.D4), Level = 1, Exp = 5 },
+				Article = ""
+			},
+                 "gigantic butterflies"
+			);
+			//I think we should make these creatures only accessible at a higher level but we should make sure that you can only fall into the well at the same level
+			wonderland.AddCreature(new Creature()
+			{
+				Name = "dragons",
+				Description = "Three dragons, two adults and one baby. They seem peaceful but powerful.",
+				Stats = new StatChart() { MaxHPs = 3, HPs = 3, Atk = new Dice(Dice.Type.D6), Def = new Dice(Dice.Type.D4), Level = 1, Exp = 5 },
+				Article = "some"
+			},
+				"dragons"
+			);
+
+			wonderland.AddItem(new Item()
+			{
+				Name = "scroll",
+				Description = "A scroll smothered with dirt. It is faded and you can only make out the words palace and sky",
+				Article = "a"
+			},
+				"scroll"
+			);
+		}
+
+
+
 			// These two lines LINK the two areas together. Don't forget to go both ways or you'll end up with a dead end
 			// and no way out!!!
 			well.AddNeighbor(stream, "east");
@@ -163,7 +204,7 @@ namespace TheWorld
 			cityGates.AddNeighbor(stream, "west");
 			start.AddNeighbor(stream, "north");
 			stream.AddNeighbor(start, "south");
-
+            well.Addneighbor(wonderland, "inside");
 			// Go back to the Main method and tell it where to start the game!
 			return start;
 		}

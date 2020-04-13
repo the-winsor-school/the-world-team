@@ -44,7 +44,13 @@ namespace TheWorld
 			set;
 		}
 
-	}
+        public bool Open
+        {
+            get;
+            set;
+        }
+
+    }
 
     // TODO: Moderate Achievement
     // Build a "Book" class which is an Item that is both Carryable and Useable.
@@ -159,6 +165,67 @@ namespace TheWorld
                 creature.Stats.HPs += HealValue;
                 if (--UseCount <= 0)
                     throw new ItemDepletedException(string.Format("Your {0} has run out.", this.Name), this);
+            }
+            else
+            {
+                throw new WorldException(string.Format("You can't use this item on {0}...", this.Name), target);
+            }
+        }
+    }
+    public class city_gates_key : Item, ICarryableItem, IUseableItem
+    {
+        /// <summary>
+        /// How much does this thing weigh?
+        /// What does that even mean?
+        /// </summary>
+        public int Weight { get; set; }
+
+        public int UseCount { get; set; }
+
+        /// <summary>
+        /// Use this key to open the city gates door
+        /// </summary>
+        /// <param name="target">target must be of type item.</param>
+        public void Use(ref object target)
+        {
+            if (target is Item)
+            {
+                try
+                {
+                    Item item = (Item)target;
+                    item.Open = true;
+                }
+                catch
+                {
+                    throw new WorldException(string.Format("You can't open {0}", this.Name), target);
+                }
+            }
+            else
+            {
+                throw new WorldException(string.Format("You can't use this item on {0}...", this.Name), target);
+            }
+        }
+    }
+    public class iron_gate: Item, IUseableItem
+    {
+        /// <summary>
+        /// How much does this thing weigh?
+        /// What does that even mean?
+        /// </summary>
+        public int Weight { get; set; }
+
+        public int UseCount { get; set; }
+
+        public bool Open { get; set; }
+        /// <summary>
+        /// Use this key to open the city gates door
+        /// </summary>
+        /// <param name="target">target must be of type item.</param>
+        public void Use(ref object target) //hnng fix this
+        {
+            if (target is Item)
+            {
+                //write something here
             }
             else
             {

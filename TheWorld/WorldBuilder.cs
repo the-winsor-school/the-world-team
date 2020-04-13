@@ -132,19 +132,28 @@ namespace TheWorld
 			Area cityGates = new Area()
 			{
 				Name = "city_gates",
-				Description = "You approach the entrance to a city. The city's walls stretch to the edge of the horizon, and there is a large iron gate. Two stone lions guard the gate.",
+				Description = "You approach the entrance to a city. The city's walls stretch to the edge of the horizon, and there is a large iron gate.",
 				Article = "are"
 				//make it so that you have to kill the lions to get into the city
 			};
 
 			cityGates.AddCreature(new Creature()
 			{
-				Name = "lions",
-				Description = "Two stone lions. But they seem almost alive - and dangerous",
+				Name = "stone_lion",
+				Description = "A large stone lion. But it seems almost alive - and dangerous",
 				Stats = new StatChart() { MaxHPs = 20, HPs = 20, Atk = new Dice(Dice.Type.D6), Def = new Dice(Dice.Type.D4), Level = 1, Exp = 5 },
-				Article = ""
+				Article = " a"
 			},
-				"lions"
+				"stone_lion"
+			);
+
+			well.AddItem(new Item()
+			{
+				Name = "door",
+				Description = "A large stone door guards the entrance to the city. You try to open it, but you cannot. There is no key-hole.",
+				Article = " a"
+			},
+				"door"
 			);
 			// These two lines LINK the two areas together. Don't forget to go both ways or you'll end up with a dead end
 			// and no way out!!!

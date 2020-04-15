@@ -44,12 +44,21 @@ namespace TheWorld
 			set;
 		}
 
-        // TODO:  Moderate Achievement
-        // Give Creatures an Inventory (much like the Player's Backpack)
-        // When the Creature is defeated, these Items should then drop into the
-        // CurrentArea for the Player to be able to PickUp.
-        // (That logic will be added to the ProcessFightCommand method in the Win case.)
+		// TODO:  Moderate Achievement
+		// Give Creatures an Inventory (much like the Player's Backpack)
+		// When the Creature is defeated, these Items should then drop into the
+		// CurrentArea for the Player to be able to PickUp.
+		// (That logic will be added to the ProcessFightCommand method in the Win case.)
+		public Dictionary<string, List<ICarryableItem>> Inventory;
+        public void creatureDefeated(Creature c)
+        {
+            foreach (KeyValuePair<string, List<ICarryableItem>> item in c.Inventory)
+            {
+				TheGame.CurrentArea.Items.Add(item.Key, item.Value);
+                //not sure how to add item to current area bc Items is protected dictionary
+			}
 
-    }
+        }
+	}
 }
 

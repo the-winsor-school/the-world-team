@@ -18,7 +18,7 @@ namespace TheWorld
     /// 
     /// </summary>
     /// 
-    public class city_gates_key : Item, ICarryableItem, IUseableItem
+    public class IronGatesKey : Item, ICarryableItem, IUseableItem
     {
         /// <summary>
         /// How much does this thing weigh?
@@ -32,23 +32,27 @@ namespace TheWorld
         /// <param name="target">target must be of type item.</param>
         public void Use(ref object target)
         {
-            if (target is iron_gate)
+            if (target is IronGate)
             {
-                Item item = (Item)target;
-                item.Open = true;
+                ((IronGate)target).Unlocked = true;
             }
             else
             {
                 throw new WorldException(string.Format("You can't open this. It's either a different door or not a door. If it is not a door, why in the gosh darn world would you try to open this? You know better. I'm disapointed in you"), target);
             }
         }
+        public void Use()
+        {
+            throw new WorldException(string.Format("Use on what?"));
+        }
     }
-    public class iron_gate: Item, IUseableItem
+    public class IronGate: Item, IUseableItem
     {
         /// <summary>
-        /// How much does this thing weigh?
-        /// What does that even mean?
+        /// Is it open?
         /// </summary>
+
+        public bool Unlocked { get; set; }
 
         public bool Open { get; set; }
 
@@ -58,7 +62,12 @@ namespace TheWorld
         /// <param name="target">target must be of type item.</param>
         public void Use()
         {
-            //hnnng fix this
+            this.Open = true;
+        }
+
+        public void Use(ref object target)
+        {
+            throw new WorldException(string.Format("You can't use the door on {0}", this.Name), target);
         }
     }
 }

@@ -44,12 +44,6 @@ namespace TheWorld
 			set;
 		}
 
-        public bool Open
-        {
-            get;
-            set;
-        }
-
     }
 
     // TODO: Moderate Achievement

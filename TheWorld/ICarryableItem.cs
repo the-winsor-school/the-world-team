@@ -8,7 +8,7 @@ namespace TheWorld
 {
     /// <summary>
     /// An object that can be carried.
-    ///
+    ///IEquipableItem
     /// As a bit of Standard Nomenclature, we add an I infront of the name of
     /// Interfaces just as a quick way of noting the difference.  Your IDE also
     /// colors it differently to make that difference more clear.

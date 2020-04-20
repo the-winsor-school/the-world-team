@@ -52,13 +52,20 @@ namespace TheWorld
 		public Dictionary<string, List<ICarryableItem>> Inventory;
         public void creatureDefeated(Creature c)
         {
+            /*
             foreach (KeyValuePair<string, List<ICarryableItem>> item in c.Inventory)
             {
 				TheGame.CurrentArea.Items.Add(item.Key, item.Value);
                 //not sure how to add item to current area bc Items is protected dictionary
+			} */
+			foreach (string itemName in c.Inventory.Keys)
+			{
+				List<ICarryableItem> items = c.Inventory[itemName];
+				TheGame.CurrentArea.AddItem(items);
+				//...
 			}
 
-        }
+		}
 	}
 }
 

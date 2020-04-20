@@ -239,14 +239,12 @@ namespace TheWorld
 				return;
 			}
 
-			//this exists in sample code but I don't understand why
-			//also, when I put it into my code it creates a lot of errors
-			//string itemName = parts[1];
+			
+			string itemName = parts[1];
 
 
 			if (parts.Length == 2)
 			{
-				string itemName = null;
 				if (CurrentArea.HasItem(itemName))
 				{
 					Item item = CurrentArea.GetItem(itemName);
@@ -260,9 +258,7 @@ namespace TheWorld
 						catch (ItemDepletedException dep)
 						{
 							PrintLineSpecial(dep.Message);
-
-							//we need to write DeleteItem still
-							//CurrentArea.DeleteItem(itemName);
+							CurrentArea.DeleteItem(itemName);
 						}
 						catch (WorldException we)
 						{

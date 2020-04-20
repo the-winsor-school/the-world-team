@@ -203,6 +203,14 @@ namespace TheWorld
 			return Items [uid];
 		}
 
+		public void DeleteItem(string uid)
+		{
+			uid = uid.ToLowerInvariant();
+			if (!this.HasItem(uid))
+				throw new WorldException("I don't see that around here...");
+
+			Item.Delete(uid);
+		}
 
 		/// <summary>
 		/// Literally: Does the Items dictionary contain the given string as a Key.

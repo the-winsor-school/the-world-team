@@ -203,16 +203,6 @@ namespace TheWorld
 			return Items [uid];
 		}
 
-		
-        //trying to implement UseItem
-		//public Item UseItem(string uid)
-		//{
-		//	uid = uid.ToLowerInvariant();
-		//	if (!this.HasItem(uid))
-		//		;
-
-		//	return UseItem[uid];
-		//}
 
 		/// <summary>
 		/// Literally: Does the Items dictionary contain the given string as a Key.

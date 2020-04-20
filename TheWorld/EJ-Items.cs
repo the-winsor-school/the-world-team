@@ -17,7 +17,8 @@ namespace TheWorld
     /// A key! It opens the city_gates
     /// 
     /// </summary>
-    /// 
+    ///
+
     public class IronGatesKey : Item, ICarryableItem, IUseableItem
     {
         /// <summary>
@@ -54,7 +55,9 @@ namespace TheWorld
 
         public bool Unlocked { get; set; }
 
-        public bool Open { get; set; }
+        public Area TargetArea { get; set; }
+
+        public IronGate() { Unlocked = false; }
 
         /// <summary>
         /// Use this key to open the city gates door
@@ -62,7 +65,10 @@ namespace TheWorld
         /// <param name="target">target must be of type item.</param>
         public void Use()
         {
-            this.Open = true;
+            if (Unlocked)
+            {
+                TheGame.CurrentArea = TargetArea;
+            }
         }
 
         public void Use(ref object target)

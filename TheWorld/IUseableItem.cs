@@ -3,14 +3,6 @@ namespace TheWorld
 {
     public interface IUseableItem
     {
-
-
-        //need method "use command" in command parser
-        //takes same input (array of strings, separated words that were typed)
-        //part of this has to be "use"
-        //then check if there's a second word (there needs to be, needs to be a valid item to use)
-
-
         /// <summary>
         /// use this Item on a Target.
         ///

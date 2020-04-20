@@ -272,7 +272,7 @@ namespace TheWorld
 
 					else
 					{
-						PrintLineWarning("I can't use...", item.Name);
+						PrintLineWarning("I can't use {0}...", item.Name);
 					}
 
 				}

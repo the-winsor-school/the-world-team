@@ -209,7 +209,6 @@ namespace TheWorld
 			);
 
 
-
 			// These two lines LINK the two areas together. Don't forget to go both ways or you'll end up with a dead end
 			// and no way out!!!
 			well.AddNeighbor(stream, "east");
@@ -221,7 +220,8 @@ namespace TheWorld
             well.AddNeighbor(wonderland, "inside");
             well.AddNeighbor(wonderland, "inside");
 
-			// Go back to the Main method and tell it where to start the game!
+
+            // Go back to the Main method and tell it where to start the game!
 			return start;
 		}
 	}

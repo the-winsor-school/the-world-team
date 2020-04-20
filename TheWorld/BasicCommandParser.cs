@@ -234,26 +234,52 @@ namespace TheWorld
 		{
 			// If the user has not indicated what to use...
 			if (parts.Length == 1)
-				PrintLineWarning("Use what?");
-			else
 			{
-				// try to find what the user wants to use.
-				try
-				{
-					// if the item is there, use it.
-					//not sure yet how to do this
-				}
-				catch (WorldException e)
-				{
-					// if item is not usable, print the explanation
-                    //do we need to write out this explanation somewhere?
-					PrintLineDanger(e.Message);
-				}
-
+				PrintLineWarning("Use what?");
+				return;
 			}
+
+			//this exists in sample code but I don't understand why
+			//also, when I put it into my code it creates a lot of errors
+			//string itemName = parts[1];
+
+
+			if (parts.Length == 2)
+			{
+				string itemName = null;
+				if (CurrentArea.HasItem(itemName))
+				{
+					Item item = CurrentArea.GetItem(itemName);
+					if (item is IUseableItem)
+					{
+						try
+						{
+							//Use item
+							((IUseableItem)item).Use();
+						}
+						catch (ItemDepletedException dep)
+						{
+							PrintLineSpecial(dep.Message);
+
+							//we need to write DeleteItem still
+							//CurrentArea.DeleteItem(itemName);
+						}
+						catch (WorldException we)
+						{
+							PrintLineDanger(we.Message);
+						}
+					}
+
+					else
+					{
+						PrintLineWarning("I can't use...", item.Name);
+					}
+
+				}
+			}
+
 
 		}
 
 	}
-
 }

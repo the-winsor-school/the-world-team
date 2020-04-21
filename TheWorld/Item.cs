@@ -44,7 +44,11 @@ namespace TheWorld
 			set;
 		}
 
-	}
+        internal static void Delete(string uid)
+        {
+            throw new NotImplementedException();
+        }
+    }
 
     // TODO: Moderate Achievement
     // Build a "Book" class which is an Item that is both Carryable and Useable.

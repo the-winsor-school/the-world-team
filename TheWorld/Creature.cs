@@ -62,7 +62,6 @@ namespace TheWorld
 			{
 				List<ICarryableItem> items = c.Inventory[itemName];
 				TheGame.CurrentArea.AddItem(items);
-				//...
 			}
 
 		}

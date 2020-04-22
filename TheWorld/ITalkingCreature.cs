@@ -39,4 +39,14 @@ namespace TheWorld
         string Dialogue { get; set; }
 
     }
+
+    public class NPC : ITalkingCreature //how to extend Creature class?
+    {
+        public string Dialogue { get; set; }
+
+        public void Talk(string playerInput = null)
+        {
+            
+        }
+    }
 }

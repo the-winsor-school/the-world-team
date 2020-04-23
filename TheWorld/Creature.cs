@@ -49,7 +49,10 @@ namespace TheWorld
 		// When the Creature is defeated, these Items should then drop into the
 		// CurrentArea for the Player to be able to PickUp.
 		// (That logic will be added to the ProcessFightCommand method in the Win case.)
-		public Dictionary<string, ICarryableItem> Inventory;
+		public Dictionary<string, ICarryableItem> Inventory {
+			get;
+			set;
+		}
         public void creatureDefeated()
         {
             foreach (string itemName in this.Inventory.Keys)

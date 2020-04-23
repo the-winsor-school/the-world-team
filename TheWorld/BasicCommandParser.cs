@@ -239,38 +239,46 @@ namespace TheWorld
 				return;
 			}
 
-			
+
 			string itemName = parts[1];
 
 
 			if (parts.Length == 2)
 			{
-				if (CurrentArea.HasItem(itemName))
 				{
-					Item item = CurrentArea.GetItem(itemName);
-					if (item is IUseableItem)
+					if (CurrentArea.HasItem(itemName))
 					{
-						try
+						Item item = CurrentArea.GetItem(itemName);
+						if (item is IUseableItem)
 						{
-							//Use item
-							((IUseableItem)item).Use();
+							try
+							{
+								//Use item
+								((IUseableItem)item).Use();
+							}
+							catch (ItemDepletedException dep)
+							{
+								PrintLineSpecial(dep.Message);
+								CurrentArea.DeleteItem(itemName);
+							}
+							catch (WorldException e)
+							{
+								if (CurrentArea.CreatureExists(parts[1]))
+									PrintLineWarning("I can't use {0}...", Creature.Name");
+								else
+									PrintLineDanger(e.Message);
+								return;
+							}
 						}
-						catch (ItemDepletedException dep)
+						else
 						{
-							PrintLineSpecial(dep.Message);
-							CurrentArea.DeleteItem(itemName);
-						}
-						catch (WorldException we)
-						{
-							PrintLineDanger(we.Message);
+							PrintLineWarning("I can't use {0}...", item.Name);
 						}
 					}
-
 					else
 					{
-						PrintLineWarning("I can't use {0}...", item.Name);
+						PrintLineWarning("That item isn't around you right now...");
 					}
-
 				}
 			}
 

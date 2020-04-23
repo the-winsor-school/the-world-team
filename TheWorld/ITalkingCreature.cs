@@ -40,7 +40,7 @@ namespace TheWorld
 
     }
 
-    public class NPC : ITalkingCreature //how to extend Creature class?
+    public class NPC : Creature, ITalkingCreature
     {
         public string Dialogue { get; set; }
 

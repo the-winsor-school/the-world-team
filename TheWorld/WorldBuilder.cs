@@ -41,42 +41,42 @@ namespace TheWorld
 
 			// I can create a new Item and add it directly into the Area without having a separate variable for it!  Convenient!
 			start.AddItem(new Item()
-                {
-				    Name = "boulder",
-				    Description = "It's a big granite boulder.  It has a weird glyph carved into it, but you can't make any sense of it.",
-                    Article = " a"
-			    },
-                "boulder"
-            );
+			{
+				Name = "boulder",
+				Description = "It's a big granite boulder.  It has a weird glyph carved into it, but you can't make any sense of it.",
+				Article = " a"
+			},
+				"boulder"
+			);
 
 			// Doing it again--no separate variable for the new item.  It goes directly into the created area.
 			start.AddItem(new Item()
-                {
-                    Name = "grass",
-                    Description = "Grass... Lots of Grass... Like... Everywhere. Pretty good grass though.",
-					Article = ""
+			{
+				Name = "grass",
+				Description = "Grass... Lots of Grass... Like... Everywhere. Pretty good grass though.",
+				Article = ""
 			},
 				"grass"
-            );
+			);
 
 			// I can do that with any kind of object that I can create entirely in one command.
 			// Don't forget that last word is the Unique Identifier.  So I can't have more than one thing in my area named "bunny"
 			start.AddCreature(new Creature()
-                {
-				    Name = "bunny Rabbit",
-				    Description = "A cute bunny.  Looks pretty tasty actually...",
-				    Stats = new StatChart() { Level = 1, MaxHPs = 10, HPs = 10, Atk = new Dice(Dice.Type.D4), Def = new Dice(Dice.Type.D4), Exp = 3 },
-					Article = " a"
+			{
+				Name = "bunny Rabbit",
+				Description = "A cute bunny.  Looks pretty tasty actually...",
+				Stats = new StatChart() { Level = 1, MaxHPs = 10, HPs = 10, Atk = new Dice(Dice.Type.D4), Def = new Dice(Dice.Type.D4), Exp = 3 },
+				Article = " a"
 			},
-                "bunny"
-            );
+				"bunny"
+			);
 
 			// Here's a second area.
 			Area stream = new Area()
-            {
+			{
 				Name = "stream",
 				Description = "A burbling stream.  There are some rocks that look like you could cross them to get to the other side.",
-                Article = "is a"
+				Article = "is a"
 			};
 
 			// I will populate it with items and creatures in the same way...
@@ -85,22 +85,21 @@ namespace TheWorld
 				Name = "lizard",
 				Description = "A funny lizard with a black stripe down its back.  It doesn't look intimidated by your presence," +
 					" but it doesn't look very interested either. Upon closer inspection, it might not be alive...",
-					Article = " a"
+				Article = " a"
 			},
 				"lizard"
 			); ;
 
 			stream.AddCreature(new Creature()
-                {
-				    Name = "frog",
-				    Description = "A crazy big frog!  It looks like it could eat a bird if it caught one.  It also doesn't look happy.",
-				    Stats = new StatChart() { MaxHPs = 10, HPs = 10, Atk = new Dice(Dice.Type.D6), Def = new Dice(Dice.Type.D4), Level = 1, Exp = 5 },
-					Article = " a"
+			{
+				Name = "frog",
+				Description = "A crazy big frog!  It looks like it could eat a bird if it caught one.  It also doesn't look happy.",
+				Stats = new StatChart() { MaxHPs = 10, HPs = 10, Atk = new Dice(Dice.Type.D6), Def = new Dice(Dice.Type.D4), Level = 1, Exp = 5 },
+				Article = " a"
 			},
-                "frog"
-            );
-
-            //a well! this will lead to wonderland
+				"frog"
+			);
+			//a well! this will lead to wonderland
 			Area well = new Area()
 			{
 				Name = "well",
@@ -147,9 +146,27 @@ namespace TheWorld
 				"stone_lion"
 			);
 
-			well.AddItem(new Item()
+			Area hospitalRuins = new Area()
 			{
-				Name = "door",
+				Name = "hospital_ruins",
+				Description = "You see the remains of a hospital. Something bad seems to have happened here - no natural wear and tear could cause this",
+				Article = "are"
+			};
+
+			cityGates.AddItem(new IronGate()
+			{
+				Name = "iron_gate",
+				Description = "This gate blocks access to the interior of the city.",
+				Article = " an",
+				TargetArea = hospitalRuins
+			},
+				"iron_gate"
+			) ;
+
+
+			hospitalRuins.AddItem(new Item()
+			{
+				Name = "broken_stethoscope",
 				Description = "A large stone door guards the entrance to the city. You try to open it, but you cannot. There is no key-hole.",
 				Article = " a"
 			},
@@ -192,8 +209,6 @@ namespace TheWorld
 			},
 				"scroll"
 			);
-		}
-
 
 
 			// These two lines LINK the two areas together. Don't forget to go both ways or you'll end up with a dead end
@@ -204,8 +219,9 @@ namespace TheWorld
 			cityGates.AddNeighbor(stream, "west");
 			start.AddNeighbor(stream, "north");
 			stream.AddNeighbor(start, "south");
-            well.Addneighbor(wonderland, "inside");
-			// Go back to the Main method and tell it where to start the game!
+			well.AddNeighbor(wonderland, "inside");
+
+            // Go back to the Main method and tell it where to start the game!
 			return start;
 		}
 	}

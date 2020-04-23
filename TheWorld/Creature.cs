@@ -50,11 +50,11 @@ namespace TheWorld
 		// CurrentArea for the Player to be able to PickUp.
 		// (That logic will be added to the ProcessFightCommand method in the Win case.)
 		public Dictionary<string, ICarryableItem> Inventory;
-        public void creatureDefeated(Creature c)
+        public void creatureDefeated()
         {
-            foreach (string itemName in c.Inventory.Keys)
+            foreach (string itemName in this.Inventory.Keys)
 			{
-				ICarryableItem item = c.Inventory[itemName];
+				ICarryableItem item = this.Inventory[itemName];
 				TheGame.CurrentArea.AddItem((Item)item, itemName);
 			}
 

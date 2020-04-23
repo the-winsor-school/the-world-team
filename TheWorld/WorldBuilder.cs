@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace TheWorld
 {
@@ -67,8 +68,7 @@ namespace TheWorld
 				    Description = "A cute bunny.  Looks pretty tasty actually...",
 				    Stats = new StatChart() { Level = 1, MaxHPs = 10, HPs = 10, Atk = new Dice(Dice.Type.D4), Def = new Dice(Dice.Type.D4), Exp = 3 },
 					Article = " a",
-                    Inventory = { },
-
+                    Inventory = new Dictionary<string, ICarryableItem>() { { "potion", new HealingPotion() } },
 			},
                 "bunny"
             );

@@ -44,10 +44,6 @@ namespace TheWorld
 			set;
 		}
 
-        internal static void Delete(string uid)
-        {
-            throw new NotImplementedException();
-        }
     }
 
     // TODO: Moderate Achievement

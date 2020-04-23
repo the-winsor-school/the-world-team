@@ -209,7 +209,7 @@ namespace TheWorld
 			if (!this.HasItem(uid))
 				throw new WorldException("I don't see that around here...");
 
-			Item.Delete(uid);
+			Items.Remove(uid);
 		}
 
 		/// <summary>

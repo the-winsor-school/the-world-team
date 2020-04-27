@@ -32,7 +32,7 @@ namespace TheWorld
 		/// </summary>
 		private static List<string> CommandWords = new List<string>()
 		{
-			"go", "look", "help", "quit", "examine", "fight"
+			"go", "look", "help", "quit", "examine", "fight", "talk"
 		};
 
         /// <summary>
@@ -84,18 +84,34 @@ namespace TheWorld
             {
                 // TODO:  Implement this to show a new player how to use commands!
             }
+            else if(cmdWord.Equals("talk"))
+            {
+				ProcessTalkCommand(parts);
+            }
 
             // TODO: Many Achievements
             // Implement more commands like "use" and "get" and "talk"
 		}
+		//Talk command
+		private static void ProcessTalkCommand(string[] parts)
+		{
+			if (parts.Length == 1)
+			{
+				PrintLineWarning("You need to talk to a specific creature");
+			}
+			if (parts.Length == 2)
+			{
+				
+			}
+		}
 
 
-        /// <summary>
-        /// TODO:  Write this Method
-        /// Several Achievements inside.
-        /// </summary>
-        /// <param name="parts"></param>
-        private static void ProcessHelpCommand(string[] parts)
+		/// <summary>
+		/// TODO:  Write this Method
+		/// Several Achievements inside.
+		/// </summary>
+		/// <param name="parts"></param>
+		private static void ProcessHelpCommand(string[] parts)
         {
             if(parts.Length == 1)
             {

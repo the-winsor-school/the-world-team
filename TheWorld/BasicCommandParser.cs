@@ -97,11 +97,31 @@ namespace TheWorld
 		{
 			if (parts.Length == 1)
 			{
-				PrintLineWarning("You need to talk to a specific creature");
+				PrintLineWarning("What are you trying to talk to?");
 			}
 			if (parts.Length == 2)
 			{
-				
+				Creature creature;
+				try
+				{
+					creature = CurrentArea.GetCreature(parts[1]);
+                    if(creature is ITalkingCreature)
+                    {
+						Console.WriteLine(((ITalkingCreature)creature).Dialogue);
+					}
+                    else
+                    {
+						PrintLineWarning("That is not a talking creature");
+					}
+				}
+				catch (WorldException e)
+				{
+					if (CurrentArea.HasItem(parts[1]))
+						PrintLineWarning("You can't talk to that...");
+					else
+						PrintLineDanger(e.Message);
+					return;
+				}
 			}
 		}
 

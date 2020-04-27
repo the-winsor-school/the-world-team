@@ -17,6 +17,7 @@ namespace TheWorld
 			set;
 		}
 
+
         /// <summary>
         /// Article (and sometimes verb) used before area
         /// </summary>
@@ -44,7 +45,7 @@ namespace TheWorld
 			set;
 		}
 
-	}
+    }
 
     // TODO: Moderate Achievement
     // Build a "Book" class which is an Item that is both Carryable and Useable.

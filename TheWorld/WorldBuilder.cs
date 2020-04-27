@@ -150,7 +150,8 @@ namespace TheWorld
 			{
 				Name = "iron_gate",
 				Description = "This gate blocks access to the interior of the city.",
-				Article = " an"
+				Article = " an",
+				TargetArea = hospitalRuins //goes to hospital ruins when opened
 			},
 				"iron_gate"
 			);
@@ -169,6 +170,41 @@ namespace TheWorld
 				Article = " a"
 			},
 				"door"
+			);
+
+			Area alley = new Area()
+			{
+				Name = "alley",
+				Description = "You see a dirty, run down allyway in between two large buildings. The floor is covered with trash and you hear squeaking sounds.",
+				Article = " is a"
+			};
+
+			alley.AddItem(new Item()
+			{
+				Name = "broken_glass",
+				Description = "There is a lot of broken glass on the ground. Don't step on it.",
+				Article = " "
+			},
+				"broken_glass"
+			);
+
+			alley.AddCreature(new Creature()
+			{
+				Name = "rat",
+				Description = "A large stone lion. But it seems almost alive - and dangerous",
+				Stats = new StatChart() { MaxHPs = 50, HPs = 50, Atk = new Dice(Dice.Type.D6), Def = new Dice(Dice.Type.D4), Level = 1, Exp = 5 },
+				Article = " a"
+			},
+				"rat"
+			);
+
+			alley.AddItem(new Item()
+			{
+				Name = "old_candy_wrapper",
+				Description = "It's just an old candy wrapper. It doens't even look like it was good candy.",
+				Article = " an"
+			},
+				"old_candy_wrapper"
 			);
 
 			// making the one way area (the magical city that you can only get to by falling into the well

@@ -143,7 +143,7 @@ namespace TheWorld
                 if(Player.Stats.HPs <= 0) return CombatResult.Lose;
                 else if(creature.Stats.HPs <= 0)
                 {
-                    creature.creatureDefeated();
+                    creature.creatureDefeated(); //drops creature's inventory
                     return CombatResult.Win;
                 }
             }

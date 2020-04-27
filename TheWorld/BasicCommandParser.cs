@@ -261,20 +261,18 @@ namespace TheWorld
 								PrintLineSpecial(dep.Message);
 								CurrentArea.DeleteItem(itemName);
 							}
-							catch (WorldException e)
-							{
-								if (CurrentArea.CreatureExists(parts[1]))
-									PrintLineWarning("I can't use {0}...", Creature.Name");
-								else
-									PrintLineDanger(e.Message);
-								return;
-							}
-						}
+						} 
 						else
 						{
 							PrintLineWarning("I can't use {0}...", item.Name);
 						}
 					}
+
+					else if (CurrentArea.CreatureExists(parts[1]))
+					{
+							PrintLineWarning("I can't use {0}...", (parts[1]));
+					}
+                  //  CreatureExists currently throws a not yet implemented exception so the program closes if this is the case but it should work once implemented
 					else
 					{
 						PrintLineWarning("That item isn't around you right now...");

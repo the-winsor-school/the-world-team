@@ -233,7 +233,7 @@ namespace TheWorld
 		public void AddCreature(Creature creature, string uid)
 		{
 			uid = uid.ToLowerInvariant();
-			if (Creatures.ContainsKey(uid))
+			if (!this.CreatureExists(uid))
 				throw new WorldException("There is already a Creature with that unique name in this area.");
 
 			Creatures.Add(uid, creature);
@@ -247,7 +247,7 @@ namespace TheWorld
 		public Creature GetCreature(string uid)
 		{
 			uid = uid.ToLowerInvariant();
-			if (!Creatures.ContainsKey(uid))
+			if (!this.CreatureExists(uid))
 				throw new WorldException("I don't see that around here...");
 
 			return Creatures [uid];
@@ -261,7 +261,7 @@ namespace TheWorld
         public void RemoveCreature(string uid)
 		{
 			uid = uid.ToLowerInvariant();
-			if (!Creatures.ContainsKey(uid))
+			if (!this.CreatureExists(uid))
                 throw new WorldException("I don't see that around here...");
 
             Creatures.Remove(uid);
@@ -277,10 +277,11 @@ namespace TheWorld
         /// </summary>
         /// <param name="uid"></param>
         /// <returns></returns>
-		public bool CreatureExists(string uid) => throw new NotImplementedException();
+		public bool CreatureExists(string uid) => Creatures.ContainsKey(uid.ToLowerInvariant());
 
-        #endregion // Creatures
 
-    }
+		#endregion // Creatures
+
+	}
 }
 

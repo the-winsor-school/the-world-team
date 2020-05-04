@@ -207,19 +207,43 @@ namespace TheWorld
 		{
 			// If the user has not indicated where to go...
 			if (parts.Length == 1)
-				PrintLineWarning("Go where?");
-			else
 			{
+				PrintLineWarning("Go where?");
+				return;
+			}
+
+			string areaName = parts[1];
+
+			if (parts.Length == 2)
+			{
+				if (CurrentArea is IActiveArea)
+				{
+					//before you change locations, if the current location is an
+					//IActiveArea, it needs to execute it's OnExit
+					try
+					{
+						((IActiveArea)area).OnExit();
+					}
 				// try to find the neighbor the user has indicated.
-				try
-				{
-					// move to that area if the command is understood.
-					CurrentArea = CurrentArea.GetNeighbor(parts[1]);
+					try
+					{
+						// move to that area if the command is understood.
+						CurrentArea = CurrentArea.GetNeighbor(parts[1]);
+					}
+					catch (WorldException e)
+					{
+						// if GetNeighbor throws and exception, print the explanation.
+						PrintLineDanger(e.Message);
+					}
 				}
-				catch (WorldException e)
+				//need to make this only occur if you successfully changed areas
+				//so if current area is "new area" but that might be over complicating it?
+				//generally, though, if no exception is thrown, currentarea will now be a
+				//new area so it can execute OnEnter if it's an IActiveArea
+				if (CurrentArea is IActiveArea)
 				{
-					// if GetNeighbor throws and exception, print the explanation.
-					PrintLineDanger(e.Message);
+					//also not sure how to implement this
+					OnEnter
 				}
 			}
 		}

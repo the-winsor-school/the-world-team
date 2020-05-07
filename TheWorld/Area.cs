@@ -95,7 +95,7 @@ namespace TheWorld
 
             foreach (string key in Items.Keys)
 			{
-				longDescription += string.Format("There is{1} {0}. {2}",
+				longDescription += string.Format("There {1} {0}. {2}",
                                                   key,
 												  Items[key].Article, Environment.NewLine);
 			}
@@ -111,7 +111,7 @@ namespace TheWorld
 			foreach(string keyword in NeighboringAreas.Keys)
 			{
 
-				longDescription += string.Format("If you go {0} there is {1} {2}. {3}",
+				longDescription += string.Format("If you go {0} there{1} {2}. {3}",
 				                                  keyword,
 				                                  NeighboringAreas [keyword].Article,
 												  NeighboringAreas [keyword].Name,
@@ -184,8 +184,9 @@ namespace TheWorld
 		{
 			uid = uid.ToLowerInvariant();
 			if(this.HasItem(uid))
-				throw new WorldException("There is already an Item in this area with that uid.");
-			
+				throw new WorldException("There is already an item in this area with that uid.");
+
+
 			Items.Add(uid, item);
 		}
 

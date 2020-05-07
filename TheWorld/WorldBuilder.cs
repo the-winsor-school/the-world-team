@@ -77,7 +77,7 @@ namespace TheWorld
 			Area stream = new Area()
 			{
 				Name = "stream",
-				Description = "A burbling stream.  There are some rocks that look like you could cross them to get to the other side.",
+				Description = "A burbling stream. There are some rocks that look like you could cross them to get to the other side.",
 				Article = "is a"
 			};
 
@@ -97,7 +97,7 @@ namespace TheWorld
 			{
 				Name = "frog",
 				Description = "A crazy big frog!  It looks like it could eat a bird if it caught one.  It also doesn't look happy.",
-				Stats = new StatChart() { MaxHPs = 10, HPs = 10, Atk = new Dice(Dice.Type.D6), Def = new Dice(Dice.Type.D4), Level = 1, Exp = 5 },
+				Stats = new StatChart() { MaxHPs = 8, HPs = 8, Atk = new Dice(Dice.Type.D6), Def = new Dice(Dice.Type.D4), Level = 1, Exp = 5 },
 				Article = " a"
 			},
 				"frog"
@@ -114,7 +114,7 @@ namespace TheWorld
 			well.AddItem(new Item()
 			{
 				Name = "bucket",
-				Description = "A metal bucket. Some dirty old water inside it. Kind of gross.",
+				Description = "A metal bucket. Some dirty old water inside it. Kind of gross, like your face.",
 				Article = " a"
 			},
 				"bucket"
@@ -147,23 +147,23 @@ namespace TheWorld
 				Article = "a"
 			};
 
-			Area hospitalRuins = new Area()
+			Area hospital_ruins = new Area()
 			{
 				Name = "hospital_ruins",
-				Description = "You see the remains of a hospital. Something bad seems to have happened here - no natural wear and tear could cause this",
+				Description = "You see the remains of a hospital. Something bad seems to have happened here - no natural wear and tear could cause this. Your mom could though.",
 				Article = "are"
 			};
 
-			hospitalRuins.AddItem(new Item()
+			hospital_ruins.AddItem(new Item()
 			{
 				Name = "broken_stethoscope",
-				Description = "A large stone door guards the entrance to the city. You try to open it, but you cannot. There is no key-hole.",
+				Description = "A large stone door guards the entrance to the city. You try to open it, but you cannot. There is no key-hole. You're a faiilure.",
 				Article = " a"
 			},
 				"broken_stethoscope"
 			);
 
-			hospitalRuins.AddItem(new Item()
+			hospital_ruins.AddItem(new Item()
 			{
 				Name = "broken_stethoscope",
 				Description = "A large stone door guards the entrance to the city. You try to open it, but you cannot. There is no key-hole.",
@@ -175,7 +175,7 @@ namespace TheWorld
 			{
 				Name = "stone_lion",
 				Description = "A large stone lion. But it seems almost alive - and dangerous",
-				Stats = new StatChart() { MaxHPs = 20, HPs = 20, Atk = new Dice(Dice.Type.D6), Def = new Dice(Dice.Type.D4), Level = 1, Exp = 5 },
+				Stats = new StatChart() { MaxHPs = 15, HPs = 15, Atk = new Dice(Dice.Type.D6), Def = new Dice(Dice.Type.D4), Level = 1, Exp = 5 },
 				Article = " a"
 			},
 				"stone_lion"
@@ -186,7 +186,7 @@ namespace TheWorld
 				Name = "iron_gate",
 				Description = "This gate blocks access to the interior of the city.",
 				Article = " an",
-				TargetArea = hospitalRuins
+				TargetArea = wide_street
 			},
 				"iron_gate"
 			);
@@ -213,7 +213,7 @@ namespace TheWorld
 			{
 				Name = "dragons",
 				Description = "Three dragons, two adults and one baby. They seem peaceful but powerful.",
-				Stats = new StatChart() { MaxHPs = 3, HPs = 3, Atk = new Dice(Dice.Type.D6), Def = new Dice(Dice.Type.D4), Level = 1, Exp = 5 },
+				Stats = new StatChart() { MaxHPs = 20, HPs = 20, Atk = new Dice(Dice.Type.D6), Def = new Dice(Dice.Type.D4), Level = 1, Exp = 5 },
 				Article = "some"
 			},
 				"dragons"
@@ -248,10 +248,20 @@ namespace TheWorld
 			{
 				Name = "rat",
 				Description = "Of all the rats, this is one of the ugliest. It's big, fat, and looks remarkably like your alcoholic uncle.",
-				Stats = new StatChart() { MaxHPs = 50, HPs = 50, Atk = new Dice(Dice.Type.D6), Def = new Dice(Dice.Type.D4), Level = 1, Exp = 5 },
+				Stats = new StatChart() { MaxHPs = 7, HPs = 7, Atk = new Dice(Dice.Type.D6), Def = new Dice(Dice.Type.D4), Level = 1, Exp = 5 },
 				Article = " a"
 			},
 				"rat"
+			);
+
+			alley.AddCreature(new Creature()
+			{
+				Name = "racoon",
+				Description = "He looks like you when you try to put on eyeshadow. Kind of hot.",
+				Stats = new StatChart() { MaxHPs = 10, HPs = 10, Atk = new Dice(Dice.Type.D6), Def = new Dice(Dice.Type.D4), Level = 1, Exp = 5 },
+				Article = " a"
+			},
+				"racoon"
 			);
 
 			alley.AddItem(new Item()
@@ -299,7 +309,7 @@ namespace TheWorld
 			{
 				Name = "rat",
 				Description = "It's a rat. What more can I say.",
-				Stats = new StatChart() { MaxHPs = 50, HPs = 50, Atk = new Dice(Dice.Type.D6), Def = new Dice(Dice.Type.D4), Level = 1, Exp = 5 },
+				Stats = new StatChart() { MaxHPs = 7, HPs = 7, Atk = new Dice(Dice.Type.D6), Def = new Dice(Dice.Type.D4), Level = 1, Exp = 5 },
 				Article = " a"
 			},
 				"rat"
@@ -315,12 +325,30 @@ namespace TheWorld
 			pothole.AddCreature(new Creature()
 			{
 				Name = "worm",
-				Description = "It's a rat. What more can I say.",
-				Stats = new StatChart() { MaxHPs = 5, HPs = 5, Atk = new Dice(Dice.Type.D6), Def = new Dice(Dice.Type.D4), Level = 1, Exp = 5 },
+				Description = "It's a worm! I'm going to name him wormy. You can name it whatever you want, but just know that you're a failure to your parents.",
+				Stats = new StatChart() { MaxHPs = 100, HPs = 100, Atk = new Dice(Dice.Type.D6), Def = new Dice(Dice.Type.D4), Level = 1, Exp = 5 },
 				Article = " a"
 			},
 				"worm"
 			);
+
+			Area abandoned_bank = new Area()
+			{
+				Name = "abandoned_bank",
+				Description = "mmmmm. the stench of emptiness and capitalism",
+				Article = " is an"
+			};
+
+			abandoned_bank.AddItem(new Item()
+			{
+				Name = "bag_of_money",
+				Description = "Is money even worth anything anymore? You're greedy anyway, even if you don't know if there's anybody you can compare your wealth to anymore.",
+				Article = " "
+			},
+				"packet_of_sugar"
+			);
+
+
 
 
 			// These two lines LINK the two areas together. Don't forget to go both ways or you'll end up with a dead end
@@ -333,8 +361,10 @@ namespace TheWorld
 			start.AddNeighbor(stream, "north");
 			stream.AddNeighbor(start, "south");
 			well.AddNeighbor(wonderland, "inside");
-			wide_street.AddNeighbor(abandoned_supermarket, "right");
-			wide_street.AddNeighbor(hospitalRuins, "left");
+			wide_street.AddNeighbor(abandoned_supermarket, "northwest");
+			wide_street.AddNeighbor(abandoned_coffee_shop, "northeast");
+			wide_street.AddNeighbor(hospital_ruins, "southwest");
+			wide_street.AddNeighbor(abandoned_bank, "southeast");
 			abandoned_supermarket.AddNeighbor(alley, "right");
 			abandoned_coffee_shop.AddNeighbor(alley, "left");
 			wide_street.AddNeighbor(pothole, "forward");

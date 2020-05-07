@@ -63,12 +63,12 @@ namespace TheWorld
 			// I can do that with any kind of object that I can create entirely in one command.
 			// Don't forget that last word is the Unique Identifier.  So I can't have more than one thing in my area named "bunny"
 			start.AddCreature(new Creature()
-                {
-				    Name = "bunny Rabbit",
-				    Description = "A cute bunny.  Looks pretty tasty actually...",
-				    Stats = new StatChart() { Level = 1, MaxHPs = 10, HPs = 10, Atk = new Dice(Dice.Type.D4), Def = new Dice(Dice.Type.D4), Exp = 3 },
-					Article = " a",
-                    Inventory = new Dictionary<string, ICarryableItem>() { { "potion", new HealingPotion() } },
+			{
+				Name = "bunny Rabbit",
+				Description = "A cute bunny.  Looks pretty tasty actually...",
+				Stats = new StatChart() { Level = 1, MaxHPs = 10, HPs = 10, Atk = new Dice(Dice.Type.D4), Def = new Dice(Dice.Type.D4), Exp = 3 },
+				Article = " a",
+				Inventory = new Dictionary<string, ICarryableItem>() { { "potion", new HealingPotion() } },
 			},
 				"bunny"
 			);
@@ -81,6 +81,7 @@ namespace TheWorld
 				Article = "is a"
 			};
 
+
 			// I will populate it with items and creatures in the same way...
 			stream.AddItem(new Item()
 			{
@@ -90,7 +91,7 @@ namespace TheWorld
 				Article = " a"
 			},
 				"lizard"
-			); 
+			);
 
 			stream.AddCreature(new Creature()
 			{
@@ -101,6 +102,7 @@ namespace TheWorld
 			},
 				"frog"
 			);
+
 			//a well! this will lead to wonderland
 			Area well = new Area()
 			{
@@ -138,6 +140,37 @@ namespace TheWorld
 				//make it so that you have to kill the lions to get into the city
 			};
 
+			Area wide_street = new Area()
+			{
+				Name = "wide_street",
+				Description = "You see a wide, yet abandoned street. Many vehicles must have passed here once, but the street is stark empty now.",
+				Article = "a"
+			};
+
+			Area hospitalRuins = new Area()
+			{
+				Name = "hospital_ruins",
+				Description = "You see the remains of a hospital. Something bad seems to have happened here - no natural wear and tear could cause this",
+				Article = "are"
+			};
+
+			hospitalRuins.AddItem(new Item()
+			{
+				Name = "broken_stethoscope",
+				Description = "A large stone door guards the entrance to the city. You try to open it, but you cannot. There is no key-hole.",
+				Article = " a"
+			},
+				"broken_stethoscope"
+			);
+
+			hospitalRuins.AddItem(new Item()
+			{
+				Name = "broken_stethoscope",
+				Description = "A large stone door guards the entrance to the city. You try to open it, but you cannot. There is no key-hole.",
+				Article = " a"
+			},
+				"door"
+			);
 			cityGates.AddCreature(new Creature()
 			{
 				Name = "stone_lion",
@@ -148,13 +181,6 @@ namespace TheWorld
 				"stone_lion"
 			);
 
-			Area hospitalRuins = new Area()
-			{
-				Name = "hospital_ruins",
-				Description = "You see the remains of a hospital. Something bad seems to have happened here - no natural wear and tear could cause this",
-				Article = "are"
-			};
-
 			cityGates.AddItem(new IronGate()
 			{
 				Name = "iron_gate",
@@ -163,51 +189,6 @@ namespace TheWorld
 				TargetArea = hospitalRuins
 			},
 				"iron_gate"
-			) ;
-
-
-			hospitalRuins.AddItem(new Item()
-			{
-				Name = "broken_stethoscope",
-				Description = "A large stone door guards the entrance to the city. You try to open it, but you cannot. There is no key-hole.",
-				Article = " a"
-			},
-				"door"
-			);
-
-			Area alley = new Area()
-			{
-				Name = "alley",
-				Description = "You see a dirty, run down allyway in between two large buildings. The floor is covered with trash and you hear squeaking sounds.",
-				Article = " is a"
-			};
-
-			alley.AddItem(new Item()
-			{
-				Name = "broken_glass",
-				Description = "There is a lot of broken glass on the ground. Don't step on it.",
-				Article = " "
-			},
-				"broken_glass"
-			);
-
-			alley.AddCreature(new Creature()
-			{
-				Name = "rat",
-				Description = "A large stone lion. But it seems almost alive - and dangerous",
-				Stats = new StatChart() { MaxHPs = 50, HPs = 50, Atk = new Dice(Dice.Type.D6), Def = new Dice(Dice.Type.D4), Level = 1, Exp = 5 },
-				Article = " a"
-			},
-				"rat"
-			);
-
-			alley.AddItem(new Item()
-			{
-				Name = "old_candy_wrapper",
-				Description = "It's just an old candy wrapper. It doens't even look like it was good candy.",
-				Article = " an"
-			},
-				"old_candy_wrapper"
 			);
 
 			// making the one way area (the magical city that you can only get to by falling into the well
@@ -225,8 +206,8 @@ namespace TheWorld
 				Stats = new StatChart() { MaxHPs = 3, HPs = 3, Atk = new Dice(Dice.Type.D6), Def = new Dice(Dice.Type.D4), Level = 1, Exp = 5 },
 				Article = ""
 			},
-                 "gigantic butterflies"
-			);
+	            "gigantic butterflies"
+            );
 			//I think we should make these creatures only accessible at a higher level but we should make sure that you can only fall into the well at the same level
 			wonderland.AddCreature(new Creature()
 			{
@@ -247,6 +228,100 @@ namespace TheWorld
 				"scroll"
 			);
 
+			Area alley = new Area()
+			{
+				Name = "alley",
+				Description = "You see a dirty, run down allyway in between two large buildings. The floor is covered with trash and you hear squeaking sounds.",
+				Article = " is a"
+			};
+
+            alley.AddItem(new Item()
+			{
+				Name = "broken_glass",
+				Description = "There is a lot of broken glass on the ground. Don't step on it.",
+				Article = " "
+			},
+				"broken_glass"
+			);
+
+			alley.AddCreature(new Creature()
+			{
+				Name = "rat",
+				Description = "Of all the rats, this is one of the ugliest. It's big, fat, and looks remarkably like your alcoholic uncle.",
+				Stats = new StatChart() { MaxHPs = 50, HPs = 50, Atk = new Dice(Dice.Type.D6), Def = new Dice(Dice.Type.D4), Level = 1, Exp = 5 },
+				Article = " a"
+			},
+				"rat"
+			);
+
+			alley.AddItem(new Item()
+			{
+				Name = "old_candy_wrapper",
+				Description = "It's just an old candy wrapper. It doens't even look like it was good candy.",
+				Article = " an"
+			},
+				"old_candy_wrapper"
+			);
+
+			Area abandoned_supermarket = new Area()
+			{
+				Name = "abandoned_supermarket",
+				Description = "You see a supermarket with next to no food on the shelves. The shelves are upended and trash is spread all over, as if the supermarket had been raided.",
+				Article = " is an"
+			};
+
+			abandoned_supermarket.AddItem(new Item()
+			{
+				Name = "can_of_spam",
+				Description = "One of the only food items left in the supermarket is an unopened can of spam underneath an upterned shelf. You can open it if you want, but it seems like it's been here a long time.",
+				Article = " "
+			},
+				"can_of_spam"
+			);
+
+			Area abandoned_coffee_shop = new Area()
+			{
+				Name = "abandoned_coffee_shop",
+				Description = "When you look closely at this quaint little coffee shop, a feeling of unease washes over you.",
+				Article = " is an"
+			};
+
+			abandoned_coffee_shop.AddItem(new Item()
+			{
+				Name = "packet_of_sugar",
+				Description = "Wow, it's not even real sugar. This place SUCKS.",
+				Article = " "
+			},
+				"packet_of_sugar"
+			);
+
+			abandoned_coffee_shop.AddCreature(new Creature()
+			{
+				Name = "rat",
+				Description = "It's a rat. What more can I say.",
+				Stats = new StatChart() { MaxHPs = 50, HPs = 50, Atk = new Dice(Dice.Type.D6), Def = new Dice(Dice.Type.D4), Level = 1, Exp = 5 },
+				Article = " a"
+			},
+				"rat"
+			);
+
+			Area pothole = new Area()
+			{
+				Name = "pothole",
+				Description = "This is a gosh-darn large pothole.",
+				Article = " is an"
+			};
+
+			pothole.AddCreature(new Creature()
+			{
+				Name = "worm",
+				Description = "It's a rat. What more can I say.",
+				Stats = new StatChart() { MaxHPs = 5, HPs = 5, Atk = new Dice(Dice.Type.D6), Def = new Dice(Dice.Type.D4), Level = 1, Exp = 5 },
+				Article = " a"
+			},
+				"worm"
+			);
+
 
 			// These two lines LINK the two areas together. Don't forget to go both ways or you'll end up with a dead end
 			// and no way out!!!
@@ -254,11 +329,16 @@ namespace TheWorld
 			stream.AddNeighbor(well, "west");
 			stream.AddNeighbor(cityGates, "east");
 			cityGates.AddNeighbor(stream, "west");
+			cityGates.AddNeighbor(wide_street, "east");
 			start.AddNeighbor(stream, "north");
 			stream.AddNeighbor(start, "south");
 			well.AddNeighbor(wonderland, "inside");
-
-            // Go back to the Main method and tell it where to start the game!
+			wide_street.AddNeighbor(abandoned_supermarket, "right");
+			wide_street.AddNeighbor(hospitalRuins, "left");
+			abandoned_supermarket.AddNeighbor(alley, "right");
+			abandoned_coffee_shop.AddNeighbor(alley, "left");
+			wide_street.AddNeighbor(pothole, "forward");
+			// Go back to the Main method and tell it where to start the game!
 			return start;
 		}
 	}

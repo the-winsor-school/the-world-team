@@ -123,6 +123,32 @@ namespace TheWorld
 					return;
 				}
 			}
+            if (parts.Length == 3)
+            {
+				Creature creature;
+				try
+				{
+					creature = CurrentArea.GetCreature(parts[1]);
+					if (creature is ITalkingCreature)
+					{
+						((ITalkingCreature)creature).Talk(parts[2]);
+						Console.WriteLine("You said {0} to the {1} creature", parts[2], creature.Name);
+						Console.WriteLine(((ITalkingCreature)creature).Dialogue);
+					}
+					else
+					{
+						PrintLineWarning("That is not a talking creature");
+					}
+				}
+				catch (WorldException e)
+				{
+					if (CurrentArea.HasItem(parts[1]))
+						PrintLineWarning("You can't talk to that...");
+					else
+						PrintLineDanger(e.Message);
+					return;
+				}
+			}
 		}
 
 
